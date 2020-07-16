@@ -1,26 +1,68 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import { BrowserRouter as Router } from "react-router-dom";
+import Routes from "./Routes";
+import {
+  MDBNavbar,
+  MDBNavbarBrand,
+  MDBNavbarNav,
+  MDBNavItem,
+  MDBNavLink,
+  MDBIcon,
+  MDBNavbarToggler,
+  MDBCollapse,
+} from "mdbreact";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+class App extends Component {
+  state = {
+    collapseID: "",
+    isOpen: false,
+  };
+
+  toggleCollapse = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+  }
+  out() {
+    localStorage.removeItem("name");
+    window.location.href = "/";
+  }
+
+  render() {
+    return (
+      <Router>
+        <MDBNavbar
+          color = "default-color"
+          dark
+          expand="md"
+          style={{
+          
+            fontSize: "18px",
+            textShadow: "3px 3px 8px black",
+            width: "100%",
+          
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          <MDBNavbarBrand>
+            <strong className="white-text">ระบบการสั่งสินค้าของสาขา</strong>
+          </MDBNavbarBrand>
+          <MDBNavbarToggler onClick={this.toggleCollapse} />
+        <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
+
+  
+        <MDBNavbarNav left>
+            <MDBNavItem active>
+              <MDBNavLink to="#!">Branch</MDBNavLink>
+            </MDBNavItem>
+            <MDBNavItem>
+              <MDBNavLink to="#!">Company</MDBNavLink>
+            </MDBNavItem>
+            </MDBNavbarNav>
+            </MDBCollapse>
+            </MDBNavbar>
+        <Routes />
+      </Router>
+    );
+  }
 }
 
 export default App;
