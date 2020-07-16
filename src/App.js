@@ -19,9 +19,7 @@ class App extends Component {
     isOpen: false,
   };
 
-  toggleCollapse = () => {
-    this.setState({ isOpen: !this.state.isOpen });
-  }
+
   out() {
     localStorage.removeItem("name");
     window.location.href = "/";
@@ -35,29 +33,19 @@ class App extends Component {
           dark
           expand="md"
           style={{
-          
             fontSize: "18px",
             textShadow: "3px 3px 8px black",
             width: "100%",
-          
           }}
         >
+           <MDBNavLink to="#!">
+           <img src="http://172.18.0.30/main2015/images/logo-jib-2015-w.png"
+              style={{width:'50px'}} 
+           />
+           </MDBNavLink>
           <MDBNavbarBrand>
             <strong className="white-text">ระบบการสั่งสินค้าของสาขา</strong>
           </MDBNavbarBrand>
-          <MDBNavbarToggler onClick={this.toggleCollapse} />
-        <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
-
-  
-        <MDBNavbarNav left>
-            <MDBNavItem active>
-              <MDBNavLink to="#!">Branch</MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem>
-              <MDBNavLink to="#!">Company</MDBNavLink>
-            </MDBNavItem>
-            </MDBNavbarNav>
-            </MDBCollapse>
             </MDBNavbar>
         <Routes />
       </Router>
