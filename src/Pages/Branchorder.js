@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import Pageorder from '../Components/Pageorder';
 
-export default class Productbranch01 extends Component {
+export default class Branchorder extends Component {
   constructor(props){
     super(props);
     this.state={
       data:[
-        { id_product:'001',name_product:'acer',type_product:'CPU',discription_product:'notebook',price_product:'2458',warranty_product:'10',count_product:5,limit_product:'5',stock_product:'1200'},
+        { id_product:'1234567890',name_product:'acer',type_product:'CPU',discription_product:'notebook',price_product:'2458',warranty_product:'10',count_product:5,limit_product:'5',stock_product:'1200'},
         { id_product:'001',name_product:'acer',type_product:'CPU',discription_product:'notebook',price_product:'2458',warranty_product:'10',count_product:5,limit_product:'5',stock_product:'1200'},
         { id_product:'001',name_product:'acer',type_product:'CPU',discription_product:'notebook',price_product:'2458',warranty_product:'10',count_product:5,limit_product:'5',stock_product:'1200'},
         { id_product:'001',name_product:'acer',type_product:'CPU',discription_product:'notebook',price_product:'2458',warranty_product:'10',count_product:5,limit_product:'5',stock_product:'1200'},
@@ -29,7 +29,6 @@ export default class Productbranch01 extends Component {
        <>
        <center>
           <div>
-    
             <Pageorder data={this.state.data} />
           </div>
         </center>

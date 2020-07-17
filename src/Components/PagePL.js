@@ -14,7 +14,7 @@ import {
     MDBTable
   } from 'mdbreact';
 
-export default class Pageorder extends Component {
+export default class PagePL extends Component {
     constructor(props){
         super(props);
         this.myGrid = React.createRef(JqxGrid);
@@ -45,31 +45,15 @@ export default class Pageorder extends Component {
                 { text:'ประเภทสินค้า',datafield:'type_product', width: '20%', align: 'center',cellsalign:'left',editable:false},
                 { text:'จำนวนการสั่งสินค้า (ชิ้น)',datafield:'count_product', width: '13%', align: 'center',cellsalign:'center',editable:true,filterable:false},
                 { text:'สั่งสินค้าได้สูงสุด (ชิ้น)',datafield:'limit_product', width: '13%', align: 'center',cellsalign:'center',editable:false,filterable:false},
-                { text:'จัดการสินค้า',datafield:"view", width: '15%',columntype:"button",cellsrenderer:()=>{return 'สั่งสินค้า';}, align: 'center',editable:false,sortable:false,filterable:false},
+
             ],
             source: new jqx.dataAdapter(source),
             model: false,
             config:[]
         }
-        this.onCellclick=this.onCellclick.bind(this)
+      
     }
-    onCellclick (e) {
-        if(e.args.datafield==='view'){
-            this.setState({
-                config:[
-                    {
-                        id:this.props.data[e.args.rowindex].id_product,
-                        name:this.props.data[e.args.rowindex].name_product,
-                        count:this.props.data[e.args.rowindex].count_product,
-                        limit:this.props.data[e.args.rowindex].limit_product
-                    }
-                ]
-            })
-            console.log(this.props.data[e.args.rowindex].id_product);
-            this.toggle()
-        }
-        
-    }
+  
     toggle = ()=>{
         this.setState({
             model: !this.state.model
@@ -110,7 +94,7 @@ export default class Pageorder extends Component {
 
                                 <tr>
                                     <td><p style={{textAlign:'center',fontSize:'20px'}}>
-                                        สั่งสินค้าจำนวน (ชิ้น) *</p>
+                                        สั่งสินค้าทั้งหมด (ชิ้น) *</p>
                                         </td><td><input className='form-control' value={i.count} readOnly /></td>
                                 </tr>
 
@@ -147,10 +131,8 @@ export default class Pageorder extends Component {
                     pageable={true}
                     pagesize={20}
                     autoheight={false}
-
                     columns={this.state.columns}
                     theme="metrodark"
-
                     editable={true}
                     enabletooltips={false}
                     selectionmode={'singlecell'}
