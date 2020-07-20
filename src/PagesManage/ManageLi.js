@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import PageLi from '../Components/PageLi'
+
 import JqxGrid, { jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxgrid';
 import "jqwidgets-scripts/jqwidgets/styles/jqx.base.css";
 import "jqwidgets-scripts/jqwidgets/styles/jqx.material-purple.css";
@@ -8,70 +10,28 @@ import "jqwidgets-scripts/jqwidgets/styles/jqx.metrodark.css";
 class ManageLi extends Component {
     constructor(props){
         super(props);
-        this.myGrid = React.createRef(JqxGrid);
-        const source =
-        {
-            datafields: [
-                { name:'id_product', type:'string'},
-                { name:'name_product', type:'string'},
-                { name:'type_product', type:'string'},   
-                { name:'count_product', type:'number'},
-                { name:'limit_product', type:'string'},
-                { name:'stock_product', type:'string'},
-         
-                
-                // { name:'buy_product', type:'number'},
-     
-                
-
-
-            ],
-            datatype: 'array',
-            localdata:this.props.data
-        };
-        this.state = {
-            columns:[
-                { text:'รหัสสินค้า',datafield:'id_product', width: '10%', align: 'center',cellsalign:'left',editable:false},
-                { text:'ชื่อสินค้า',datafield:'name_product', width: '20%', align: 'center',cellsalign:'left',editable:false},
-                { text:'ประเภทสินค้า',datafield:'type_product', width: '20%', align: 'center',cellsalign:'left',editable:false},
-                { text:'จำนวนการสั่ง (ชิ้น)',datafield:'count_product', width: '13%', align: 'center',cellsalign:'center',editable:true,filterable:false},
-                { text:'สั่งได้สูงสุด (ชิ้น)',datafield:'limit_product', width: '13%', align: 'center',cellsalign:'center',editable:false,filterable:false},
-                { text:'สินค้าในคลังทั้งหมด',datafield:'stock_product', width: '13%', align: 'center',cellsalign:'center',editable:false,filterable:false},
-                { text:'จัดการสินค้า',datafield:"view", width: '11%',columntype:"button",cellsrenderer:()=>{return 'สั่งสินค้า';}, align: 'center',editable:false,sortable:false,filterable:false},
-            ],
-            source: new jqx.dataAdapter(source),
-            model: false,
-            config:[]
+        this.state={
+          data:[
+            { id_branch:'01',id_product:'3008526218',name_product:'VGA (การ์ดแสดงผล) MSI GTX1660 VENTUS XS 6G OC ',type_product:'Graphic Card',count_product:5,limit_product:10},
+            { id_branch:'01',id_product:'3008526214',name_product:'VGA (การ์ดแสดงผล) GIGABYTE RX570 GAMING 8G DDR5 256 BIT GV-RX570GAMING-8GD (REV2.0) ',type_product:'Graphic Card',count_product:10,limit_product:10},
+            { id_branch:'01',id_product:'0199002906',name_product:'CPU (ซีพียู) AMD AM4 RYZEN7 3800XT 3.9 GHz',type_product:'CPU',count_product:5,limit_product:10},
+            { id_branch:'01',id_product:'0199002871',name_product:'CPU (ซีพียู) AMD AM4 RYZEN9 3950X 3.5 GHz',type_product:'CPU',count_product:5,limit_product:10},
+            { id_branch:'01',id_product:'0201038090',name_product:'MAINBOARD (เมนบอร์ด) AM4 ASROCK B550 STEEL LEGEND',type_product:'Mainboard',count_product:10,limit_product:10},
+            { id_branch:'01',id_product:'0201038074',name_product:'MAINBOARD (เมนบอร์ด) AM4 MSI MAG B550M MORTAR ',type_product:'Mainboard',count_product:5,limit_product:10},
+            { id_branch:'01',id_product:'0320550483',name_product:'16GB (8GBx2) DDR4/3200 RAM PC (แรมพีซี) G.SKILL SNIPER X (DIGITAL CAMO) (F4-3200C16D-16GSXKB)',type_product:'RAM For PC',count_product:5,limit_product:10},
+            { id_branch:'01',id_product:'0320550472',name_product:'16GB (8GBx2) DDR4/3200 RAM PC (แรมพีซี) CORSAIR DOMINATOR PLATINUM RGB (WHITE) (CMT16GX4M2Z3200C16W) ',type_product:'RAM For PC',count_product:5,limit_product:10},
+            { id_branch:'01',id_product:'2310392952',name_product:'POWER SUPPLY (อุปกรณ์จ่ายไฟ) SILVERSTONE 750W STRIDER (80+ GOLD) (SST-ST75F-GS) V3.0 ',type_product:'Power Supply',count_product:10,limit_product:10},
+            { id_branch:'01',id_product:'2310392949',name_product:'POWER SUPPLY (อุปกรณ์จ่ายไฟ) ANTEC 650W ATOM B650 (80+ BRONZE)',type_product:'Power Supply',count_product:10,limit_product:10},
+          ],
+    
         }
-    }
+
+        }
+  
     render() {
         return (
             <div>
-                Manage List
-                <JqxGrid
-                    ref={this.myGrid}
-                    width='100%'
-                    height="700px"
-                    source={this.state.source}
-                    pageable={true}
-                    pagesize={20}
-                    autoheight={false}
-
-                    columns={this.state.columns}
-                    theme="metrodark"
-
-                    editable={true}
-                    enabletooltips={false}
-                    selectionmode={'singlecell'}
-                    editmode={'click'}
-                    columnsresize={false}
-                    sortable={true}
-
-                    filterable={true}
-                    showfilterrow={true}
-
-                    onCellclick={this.onCellclick}
-                />
+                <PageLi data={this.state.data} />
             </div>
         )
     }

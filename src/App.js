@@ -1,24 +1,12 @@
 import React, { Component } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Routes from './Routes'
-
+import Routes from "./Routes";
 import {
-  MDBNavbar,
-  MDBNavbarBrand,
-  MDBNavbarNav,
-  MDBNavItem,
-  MDBNavLink,
-  MDBIcon,
-  MDBNavbarToggler,
-  MDBCollapse,
-  MDBDropdownItem,
-  MDBDropdown,
-  MDBDropdownToggle,
-  MDBDropdownMenu
+  MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBFormInline,
+  MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem
+  } from "mdbreact";
 
-
-} from "mdbreact";
 
 class App extends Component {
   state = {
@@ -28,7 +16,7 @@ class App extends Component {
 
   toggleCollapse = () => {
     this.setState({ isOpen: !this.state.isOpen });
-  }
+  };
 
   out() {
     localStorage.removeItem("name");
@@ -38,72 +26,51 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <MDBNavbar
-          color = "default-color"
-          dark
-          expand="md"
-          style={{
-            fontSize: "18px",
-            // textShadow: "3px 3px 8px black",
-            width: "100%",
-          }}
-        >
-           <MDBNavLink to="/">
-           <img src="http://172.18.0.30/main2015/images/logo-jib-2015-w.png"
-              style={{width:'4rem'}} 
-           />
-           </MDBNavLink>
-        
-          <MDBNavbarToggler onClick={this.toggleCollapse} />
+  <MDBNavbar color="indigo" dark expand="md">
+        <MDBNavbarBrand>
+          <strong className="white-text">Navbar</strong>
+        </MDBNavbarBrand>
+        <MDBNavbarToggler onClick={this.toggleCollapse} />
         <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
-     
-
-               <MDBNavbarNav left>
-               <MDBNavItem>
-              <MDBDropdown>
-                <MDBDropdownToggle nav caret style={{marginRight:'2rem'}}>
-                สาขา
-                </MDBDropdownToggle>
-                <MDBDropdownMenu className="dropdown-default" >
-                  <MDBDropdownItem href="/branch_order">สั่งซื้อสินค้า</MDBDropdownItem>
-                </MDBDropdownMenu>
-              </MDBDropdown>
+          <MDBNavbarNav left>
+            <MDBNavItem active>
+              <MDBNavLink to="#!">Home</MDBNavLink>
             </MDBNavItem>
-            
-
+            <MDBNavItem>
+              <MDBNavLink to="#!">Features</MDBNavLink>
+            </MDBNavItem>
+            <MDBNavItem>
+              <MDBNavLink to="#!">Pricing</MDBNavLink>
+            </MDBNavItem>
             <MDBNavItem>
               <MDBDropdown>
-                <MDBDropdownToggle nav caret >
-                  <div className="d-none d-md-inline" ></div>
-                  สำนักงานใหญ่
+                <MDBDropdownToggle nav caret>
+                  <span className="mr-2">Dropdown</span>
                 </MDBDropdownToggle>
-                <MDBDropdownMenu className="dropdown-default" >
-                  <MDBDropdownItem href="/manage_product">จัดการสินค้า</MDBDropdownItem>
-                  <MDBDropdownItem href="/manage_branch">จัดการร้านสาขา</MDBDropdownItem>
-                  <MDBDropdownItem href="/manage_stock">Stock สาขา</MDBDropdownItem>
-                  <MDBDropdownItem href="/manage_list">รายการคำสั่งซื้อ</MDBDropdownItem>
-                  <MDBDropdownItem href="/manage_cate">Group Category</MDBDropdownItem>
-                  <MDBDropdownItem href="/manage_advance">การตั้งค่าระบบขั้นสูง</MDBDropdownItem>
+                <MDBDropdownMenu>
+                  <MDBDropdownItem href="#!">Action</MDBDropdownItem>
+                  <MDBDropdownItem href="#!">Another Action</MDBDropdownItem>
+                  <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
+                  <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>
           </MDBNavbarNav>
-            
-
-
-            <MDBNavbarNav right>
+          <MDBNavbarNav right>
             <MDBNavItem>
-            <MDBNavLink className="waves-effect waves-light" to="#!">
-            <MDBIcon icon="fas fa-times-circle" style={{fontSize:'1.5rem'}} />
-            </MDBNavLink>
+              <MDBFormInline waves>
+                <div className="md-form my-0">
+                  <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
+                </div>
+              </MDBFormInline>
             </MDBNavItem>
           </MDBNavbarNav>
+        </MDBCollapse>
+      </MDBNavbar>
 
-            </MDBCollapse>
-          </MDBNavbar>
-   
-              
-              <Routes />
+        <Routes />
+        
+       
       </Router>
     );
   }

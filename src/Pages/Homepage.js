@@ -1,24 +1,17 @@
 import React, { Component } from "react";
+import { MDBBtn } from "mdbreact";
+
+import "../Style/HomepageStyle.css";
 
 export default class Homepage extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state={
-    
-    }
+    this.state = {};
   }
-
 
   render() {
     return (
-       <>
-       <center>
-          <div>
-     ระบบการสั่งสินค้า
-       
-          </div>
-        </center>
-       </>
+  <></>
     );
   }
 }

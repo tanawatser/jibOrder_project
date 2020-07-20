@@ -12,12 +12,9 @@ class ManageCate extends Component {
         const source =
         {
             datafields: [
-                { name:'id_branch', type:'string'},
-
                 { name:'id_product', type:'string'},
                 { name:'name_product', type:'string'},
                 { name:'type_product', type:'string'},   
-                { name:'count_product', type:'number'},
                 { name:'limit_product', type:'string'},
                 { name:'stock_product', type:'string'},
             ],
@@ -26,13 +23,12 @@ class ManageCate extends Component {
         };
         this.state = {
             columns:[
-                { text:'รหัสร้านสาขา',datafield:'id_branch', width: '10%', align: 'center',cellsalign:'left',editable:false},
+               
                 { text:'รหัสสินค้า',datafield:'id_product', width: '10%', align: 'center',cellsalign:'left',editable:false},
                 { text:'ชื่อสินค้า',datafield:'name_product', width: '20%', align: 'center',cellsalign:'left',editable:false},
                 { text:'ประเภทสินค้า',datafield:'type_product', width: '20%', align: 'center',cellsalign:'left',editable:false},
-                { text:'จำนวนการสั่ง (ชิ้น)',datafield:'count_product', width: '13%', align: 'center',cellsalign:'center',editable:true,filterable:false},
                 { text:'สั่งได้สูงสุด (ชิ้น)',datafield:'limit_product', width: '13%', align: 'center',cellsalign:'center',editable:false,filterable:false},
-                { text:'สินค้าในคลังทั้งหมด',datafield:'stock_product', width: '13%', align: 'center',cellsalign:'center',editable:false,filterable:false},
+                { text:'สินค้าในคลังทั้งหมด (ชิ้น)',datafield:'stock_product', width: '13%', align: 'center',cellsalign:'center',editable:false,filterable:false},
                 { text:'จัดการสินค้า',datafield:"view", width: '11%',columntype:"button",cellsrenderer:()=>{return 'สั่งสินค้า';}, align: 'center',editable:false,sortable:false,filterable:false},
             ],
             source: new jqx.dataAdapter(source),

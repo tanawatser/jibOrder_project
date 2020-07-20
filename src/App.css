@@ -1,5 +1,7 @@
+
 .App {
   text-align: center;
+  
 }
 
 .App-logo {
@@ -37,7 +39,22 @@
   }
 }
 
-/* ------------------------------------------ */
-.white-text {
-  /* margin-left: 3rem; */
+/* -----------------Login branch------------------------- */
+.box-container{
+  position: relative;
+  top: 5rem;
+  right: 0%;
+
+
+}
+
+.form-login{
+  /* position: absolute; */
+  width: 100%;
+
+}
+
+.pic-login {
+  width: 100%;
+
 }

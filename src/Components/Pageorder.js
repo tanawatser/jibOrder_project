@@ -25,15 +25,9 @@ export default class Pageorder extends Component {
                 { name:'name_product', type:'string'},
                 { name:'type_product', type:'string'},   
                 { name:'count_product', type:'number'},
-                { name:'limit_product', type:'string'},
-                
-         
+                { name:'limit_product', type:'string'},   
                 
                 // { name:'buy_product', type:'number'},
-     
-                
-
-
             ],
             datatype: 'array',
             localdata:this.props.data
@@ -45,7 +39,7 @@ export default class Pageorder extends Component {
                 { text:'ประเภทสินค้า',datafield:'type_product', width: '20%', align: 'center',cellsalign:'left',editable:false},
                 { text:'จำนวนการสั่งสินค้า (ชิ้น)',datafield:'count_product', width: '13%', align: 'center',cellsalign:'center',editable:true,filterable:false},
                 { text:'สั่งสินค้าได้สูงสุด (ชิ้น)',datafield:'limit_product', width: '13%', align: 'center',cellsalign:'center',editable:false,filterable:false},
-                { text:'จัดการสินค้า',datafield:"view", width: '15%',columntype:"button",cellsrenderer:()=>{return 'สั่งสินค้า';}, align: 'center',editable:false,sortable:false,filterable:false},
+                { text:'จัดการสินค้า',datafield:"view", width: '14%',columntype:"button",cellsrenderer:()=>{return 'สั่งสินค้า';}, align: 'center',editable:false,sortable:false,filterable:false},
             ],
             source: new jqx.dataAdapter(source),
             model: false,
