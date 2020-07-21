@@ -1,4 +1,7 @@
-
+*{
+      font-family: 'Meera Inimai', sans-serif;
+    font-family: 'K2D', sans-serif;
+}
 .App {
   text-align: center;
   
@@ -48,13 +51,19 @@
 
 }
 
-.form-login{
-  /* position: absolute; */
-  width: 100%;
-
-}
 
 .pic-login {
   width: 100%;
 
+}
+
+.top-navbar{
+  height: 5rem;
+  position: fixed;
+  transition: top 0.3s ease-out;
+  margin-bottom: 1rem;
+}
+
+.top-navbar.hide {
+  top:-61px;
 }

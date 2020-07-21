@@ -15,7 +15,7 @@ export default class Routes extends React.Component {
     return (
       <Switch>
        
-        <Route exact path='/login' component={Loginbranch} />
+        <Route exact path='/' component={Loginbranch} />
         <Route exact path='/order' component={Ordercards} />
 
         

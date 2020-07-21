@@ -1,32 +1,107 @@
-import React, { Component } from 'react'
-import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
+import React, { Component } from "react";
+import {
+  MDBEdgeHeader,
+  MDBFreeBird,
+  MDBContainer,
+  MDBCol,
+  MDBRow,
+  MDBCardBody,
+  MDBCard,
+  MDBCardTitle,
+  MDBCardImage,
+  MDBCardText,
+  MDBAnimation,
+  MDBNavLink,
+  MDBBtn,
+  MDBDropdown,
+  MDBDropdownToggle,
+  MDBDropdownMenu,
+  MDBDropdownItem
+} from "mdbreact";
+import "../Style/Orderstyle.css";
 
 class Ordercards extends Component {
-    constructor(props) {
-        super(props)
+  constructor(props) {
+    super(props);
 
-        this.state = {
-                 
-        }
-    }
+    this.state = {
+      product: [
+        { id: 1, name: "Notebook", brand: "asus" },
+        { id: 2, name: "Computer Set", brand: "asus" },
+        { id: 3, name: "Computer Hardware", brand: "asus" },
+        { id: 4, name: "Monitor", brand: "asus" },
+        { id: 5, name: "Gaming Gear", brand: "asus" },
+        { id: 6, name: "Storage & Memory", brand: "asus" },
+        { id: 7, name: "Network", brand: "asus" },
+        { id: 8, name: "Printer", brand: "asus" },
+        { id: 9, name: "Speaker", brand: "asus" },
+        { id: 10, name:"Software", brand: "asus" },
 
-    render() {
-        return (
-            <MDBCol>
-            <MDBCard style={{ width: "22rem" }}>
-              <MDBCardImage className="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" waves />
-              <MDBCardBody>
-                <MDBCardTitle>Card title</MDBCardTitle>
-                <MDBCardText>
-                  Some quick example text to build on the card title and make
-                  up the bulk of the card&apos;s content.
-                </MDBCardText>
-                <MDBBtn href="#">MDBBtn</MDBBtn>
-              </MDBCardBody>
-            </MDBCard>
-          </MDBCol>
-        )
-    }
+      ],
+      data: [],
+    };
+    this.setState = {};
+  }
+
+  scrollToTop = () => window.scrollTo(0, 0);
+
+  render() {
+    let { product } = this.state;
+
+    return (
+// Categories
+<MDBCol md='12' className='mt-4'>
+  
+<h2>Categories</h2>
+
+<hr className='my-5' />
+<center>
+        <MDBCard >
+        <MDBRow id='categories'>
+        {
+                      product.map(i=>(
+                  <MDBCol md='2' key={i.id}>
+                    <MDBAnimation reveal type='fadeInRight'>
+                      <MDBCard cascade className='my-3 grey lighten-4'>
+
+                          <MDBCardImage
+                          cascade
+                          className='img-fluid photo'
+                          src={require('../img/'+i.name+'.jpg')}
+                          waves
+                          />
+                          <MDBCardBody cascade className='text-center'>
+                          <MDBCardTitle>
+                            <strong>{i.name}</strong>
+                          </MDBCardTitle>
+                          <MDBCardText>
+                            รายละเอียด : {i.brand}
+                          </MDBCardText>
+
+                          <MDBNavLink
+                            tag='button'
+                            to='/'
+                            color='mdb-color'
+                            className='btn btn-outline-mdb-color btn-sm btn-rounded d-inline'
+                            onClick={this.scrollToTop}
+                          >
+                            เลือก
+                          </MDBNavLink>
+                          </MDBCardBody>
+                          </MDBCard>
+                    </MDBAnimation>
+
+            </MDBCol>
+              ))
+            }
+        </MDBRow>
+        </MDBCard>
+        </center>
+        </MDBCol>
+   
+    
+    );
+  }
 }
 
-export default Ordercards
+export default Ordercards;
