@@ -47,10 +47,7 @@
   position: relative;
   top: 5rem;
   right: 0%;
-
-
 }
-
 
 .pic-login {
   width: 100%;
@@ -59,11 +56,14 @@
 
 .top-navbar{
   height: 5rem;
-  position: fixed;
+  /* position: fixed; */
   transition: top 0.3s ease-out;
   margin-bottom: 1rem;
+  width: auto;
+
 }
 
-.top-navbar.hide {
-  top:-61px;
+.logo-nav{
+margin-right: 2rem ;
 }
+

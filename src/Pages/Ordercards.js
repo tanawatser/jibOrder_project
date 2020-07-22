@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import {
-  MDBEdgeHeader,
-  MDBFreeBird,
-  MDBContainer,
+
   MDBCol,
   MDBRow,
   MDBCardBody,
@@ -12,11 +10,7 @@ import {
   MDBCardText,
   MDBAnimation,
   MDBNavLink,
-  MDBBtn,
-  MDBDropdown,
-  MDBDropdownToggle,
-  MDBDropdownMenu,
-  MDBDropdownItem
+
 } from "mdbreact";
 import "../Style/Orderstyle.css";
 
@@ -28,14 +22,15 @@ class Ordercards extends Component {
       product: [
         { id: 1, name: "Notebook", brand: "asus" },
         { id: 2, name: "Computer Set", brand: "asus" },
-        { id: 3, name: "Computer Hardware", brand: "asus" },
+        { id: 3, name: "Hardware", brand: "asus" },
         { id: 4, name: "Monitor", brand: "asus" },
         { id: 5, name: "Gaming Gear", brand: "asus" },
-        { id: 6, name: "Storage & Memory", brand: "asus" },
-        { id: 7, name: "Network", brand: "asus" },
-        { id: 8, name: "Printer", brand: "asus" },
-        { id: 9, name: "Speaker", brand: "asus" },
-        { id: 10, name:"Software", brand: "asus" },
+        { id: 6, name: "Storage", brand: "asus" },
+        { id: 7, name: "Memory", brand: "asus" },
+        { id: 8, name: "Network", brand: "asus" },
+        { id: 9, name: "Printer", brand: "asus" },
+        { id: 10, name: "Speaker", brand: "asus" },
+        { id: 11, name:"Software", brand: "asus" },
 
       ],
       data: [],
@@ -67,7 +62,7 @@ class Ordercards extends Component {
                           <MDBCardImage
                           cascade
                           className='img-fluid photo'
-                          src={require('../img/'+i.name+'.jpg')}
+                          src={require('../img/product/'+i.name+'.jpg')}
                           waves
                           />
                           <MDBCardBody cascade className='text-center'>

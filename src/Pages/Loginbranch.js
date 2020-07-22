@@ -1,26 +1,39 @@
 import React, { Component } from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from "mdbreact";
-import "../App.css";
-import 'js-sha256';
+import {
+  MDBMask,
+  MDBRow,
+  MDBCol,
+  MDBBtn,
+  MDBView,
+  MDBContainer,
+  MDBCard,
+  MDBCardBody,
+  MDBInput,
+  MDBAnimation,
+
+} from "mdbreact";
+import "../Style/Loginstyle.css";
+import "js-sha256";
 import { sha256 } from "js-sha256";
+import Logo from "../img/logo/logo.png";
 
 class Loginbranch extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
-      password: '',
-      token: ''
+      username: "",
+      password: "",
+      token: "",
     };
 
     this.fetchData = this.fetchData.bind(this);
   }
 
   fetchData() {
-    if (this.state.username === '' || this.state.password === '') {
+    if (this.state.username === "" || this.state.password === "") {
       alert("กรุณากรอกรหัสร้านหรือรหัสผ่านของคุณ");
     } else {
-      let encode = sha256(this.state.password)
+      let encode = sha256(this.state.password);
       fetch("http://172.18.9.55:3200/login", {
         method: "POST",
         headers: {
@@ -30,77 +43,114 @@ class Loginbranch extends Component {
         body: JSON.stringify({
           username: this.state.username,
           password: this.state.password,
-          password:encode
-
+          password: encode,
         }),
       })
         .then((res) => res.json())
         .then((re) => {
-          console.log(re.token);
+          console.log(re);
           this.setState({ token: re.token });
         });
     }
     this.setState({
-      username: '',
-      password: '',
+      username: "",
+      password: "",
     });
   }
+
   render() {
+    const overlay = (
+      <div id="sidenav-overlay" style={{ backgroundColor: "transparent" }} />
+    );
+
     return (
-    
-        <MDBContainer className="box-container">
-          <MDBRow>
+      <div id="classicformpage">
+        <MDBView>
+          <MDBMask className="d-flex justify-content-center align-items-center gradient">
+            <MDBContainer>
+              <MDBRow>
+                <MDBAnimation
+                  type="fadeInLeft"
+                  delay=".3s"
+                  className="white-text text-center text-md-left col-md-6 mt-xl-5 mb-5"
+                >
+                  <center>
+                    <img src={Logo} />
+                  </center>
+                </MDBAnimation>
 
-            <MDBCol md="4"></MDBCol>
+                <MDBCol md="6" xl="5" className="mb-4">
+                  <MDBAnimation type="fadeInRight" delay=".3s">
+                    <MDBCard id="classic-card">
+                      <MDBCardBody>
+                        <h3 className="text-center" style={{ color: "black" }}>
+                          เข้าสู่ระบบ
+                        </h3>
+                        <hr className="hr-light" />
+                        <MDBInput
+                          autoFocus
+                          className="form-control"
+                          label="รหัสผู้ใช้งาน"
+                          icon="user"
+                          type="text"
+                          value={this.state.username}
+                          onChange={(e) => {
+                            this.setState({ username: e.target.value });
+                          }}
+                        />
+                        <MDBInput
+                          className="form-control"
+                          label="รหัสผ่าน"
+                          icon="lock"
+                          type="password"
+                          value={this.state.password}
+                          onChange={(e) => {
+                            this.setState({ password: e.target.value });
+                          }}
+                        />
+                      
+                        <div class="custom-control custom-checkbox">
+                          <input
+                            type="checkbox"
+                            class="custom-control-input"
+                            id="defaultUnchecked"
+                          />
+                          <label
+                            class="custom-control-label"
+                            for="defaultUnchecked"
+                          >
+                            Remember me
+                          </label>
 
-            <MDBCol md="4">
-              <form className="form-login">
-                <p className="h2 text-center mb-4">เข้าสู่ระบบ</p>
-                <br />
-                <div className="grey-text">
-                  <MDBInput
-                    autoFocus
-                    className="form-control"
-                    label="กรอกรหัสร้านสาขา"
-                    icon="user-alt"
-                    type="text"
-                    value={this.state.username}
-                    onChange={(e)=>{this.setState({username:e.target.value})}}
-                     
-                  />
+                          <a className="forgot-right" href="#" >Forgot password</a>
+                          
+                        </div>
+                  
 
-                  <MDBInput
-                    className="form-control"
-                    label="กรอกรหัสผ่าน"
-                    icon="lock"
-                    type="password"
-                    value={this.state.password}
-                    onChange={(e)=>{this.setState({password:e.target.value})}}
-                     
-                  />
-                </div>
+                        <div className="text-center mt-4 black-text">
+                          <MDBBtn
+                            type="submit"
+                            color="blue-grey"
+                            onClick={this.fetchData}
+                          >
+                            Log in
+                          </MDBBtn>
 
-                <div className="text-center">
-                  <MDBBtn color="indigo" onClick={this.fetchData}>
-                    Login
-                  </MDBBtn>
-
-                  <MDBBtn color="indigo">Exit</MDBBtn>
-                </div>
-                <center>
-                <p style={{ fontSize: "15px" }}>{this.state.token}</p>
-                </center>
-                <img
-                  className="pic-login"
-                  src="https://cdn.shopify.com/s/files/1/1832/6341/products/ARTI_SUC_PT007_ASST_99_1024x1024.jpg?v=1571326179"
-                />
-              </form>
-            </MDBCol>
-
-            <MDBCol md="4"></MDBCol>
-          </MDBRow>
-        </MDBContainer>
-      
+                          <center>
+                            <p style={{ fontSize: "15px" }}>
+                              {this.state.token}
+                            </p>
+                          </center>
+                        </div>
+                      </MDBCardBody>
+                    </MDBCard>
+                  </MDBAnimation>
+                </MDBCol>
+              </MDBRow>
+            </MDBContainer>
+          </MDBMask>
+        </MDBView>
+      </div>
     );
   }
 }
