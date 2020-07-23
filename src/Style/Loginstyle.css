@@ -26,7 +26,8 @@
   
   /* card login  */
   #classicformpage .card {
-    background-color: #e0dfdf9a;
+    background-color: #e0dfdf2a;
+ 
   }
   
   #classicformpage h6 {
@@ -42,11 +43,27 @@
   }
   
   @media (max-width: 768px) {
-    #classicformpage .navbar:not(.top-nav-collapse) {
-      background: #78909c !important;
-    
+
+ 
+        #classicformpage  .view{
+          background: -moz-linear-gradient(45deg, #1C73F4, #9BF3FB  100%)!important;
+          background: -webkit-linear-gradient(45deg #1C73F4, #9BF3FB   100%)!important;
+          background: linear-gradient(45deg, #1C73F4, #9BF3FB  100%)!important;
+
+      }
+
+        #classicformpage  .img-logo {
+         display: none;
+        
+        }
+
+        #classicformpage  .btn-blue-grey {
+          background: #9ACCD1 !important;
+          color: #000;
+         
+         }
     }
-  }
+  
   
   #classicformpage label {
     color: #000 !important;
@@ -55,6 +72,13 @@
   /* ----------------------------------------- */
 
 .forgot-right{
-    position: absolute;
+  position: absolute;
    right: 0px;
+}
+
+@media (max-width: 1500px) {
+  .mt-xl-5, .my-xl-5 {
+    margin-top: 3rem!important
+  }
+
 }

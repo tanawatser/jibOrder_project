@@ -64,29 +64,33 @@ class Loginbranch extends Component {
     );
 
     return (
-      <div id="classicformpage">
+      <div id="classicformpage" >
         <MDBView>
           <MDBMask className="d-flex justify-content-center align-items-center gradient">
             <MDBContainer>
               <MDBRow>
-                <MDBAnimation
+                <MDBAnimation 
                   type="fadeInLeft"
                   delay=".3s"
                   className="white-text text-center text-md-left col-md-6 mt-xl-5 mb-5"
                 >
                   <center>
-                    <img src={Logo} />
+                    <img className ="img-logo"src={Logo} />
                   </center>
+
                 </MDBAnimation>
 
                 <MDBCol md="6" xl="5" className="mb-4">
                   <MDBAnimation type="fadeInRight" delay=".3s">
                     <MDBCard id="classic-card">
                       <MDBCardBody>
+                      <br />
                         <h3 className="text-center" style={{ color: "black" }}>
                           เข้าสู่ระบบ
                         </h3>
+                        <br />
                         <hr className="hr-light" />
+                        <br />
                         <MDBInput
                           autoFocus
                           className="form-control"
@@ -98,6 +102,7 @@ class Loginbranch extends Component {
                             this.setState({ username: e.target.value });
                           }}
                         />
+                 
                         <MDBInput
                           className="form-control"
                           label="รหัสผ่าน"
@@ -115,32 +120,18 @@ class Loginbranch extends Component {
                             class="custom-control-input"
                             id="defaultUnchecked"
                           />
-                          <label
-                            class="custom-control-label"
-                            for="defaultUnchecked"
-                          >
-                            Remember me
-                          </label>
-
-                          <a className="forgot-right" href="#" >Forgot password</a>
-                          
                         </div>
                   
 
                         <div className="text-center mt-4 black-text">
                           <MDBBtn
+                        
                             type="submit"
                             color="blue-grey"
                             onClick={this.fetchData}
                           >
                             Log in
                           </MDBBtn>
-
-                          <center>
-                            <p style={{ fontSize: "15px" }}>
-                              {this.state.token}
-                            </p>
-                          </center>
                         </div>
                       </MDBCardBody>
                     </MDBCard>

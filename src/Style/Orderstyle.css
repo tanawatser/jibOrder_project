@@ -1,0 +1,4 @@
+.img-fluid, .modal-dialog.cascading-modal.modal-avatar .modal-header, .video-fluid {
+    height: 30vh !important;
+    width: 100%;
+}
