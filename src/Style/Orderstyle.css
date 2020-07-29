@@ -1,29 +1,42 @@
 .topic {
-    background-color: cadetblue;
-    padding: 1rem;
-    margin-bottom: 2rem;
+  background-color: cadetblue;
+  padding: 1rem;
+  margin-bottom: 2rem;
 }
 
 .sub-main {
-    background-color: cadetblue;
-    padding: 1rem;
-    margin-bottom: 0.5rem;
+  background-color: cadetblue;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
 }
 .bg {
-    background-color: rgb(96, 186, 189);
-    height: 100vh;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    }
-
- 
-.img-fluid, .modal-dialog.cascading-modal.modal-avatar .modal-header, .video-fluid {
-    height: 50vh !important;
-    width: 100%;
+  background-color: rgb(96, 186, 189);
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.card {
-    width: 100%;
-    margin-top: 5rem !important;
+.img-fluid,
+.modal-dialog.cascading-modal.modal-avatar .modal-header,
+.video-fluid {
+  height: 50vh !important;
+  width: 100%;
+}
+
+
+.pic-product:hover + .hide {
+  display: inline-block;
+  position: absolute;
+  width: 300px;
+  padding: 15px;
+  margin-left: 50px;
+  background-color: #fff;
+  border-radius: 10px;
+  border: solid 1px;
+  z-index: 1;
+}
+
+.hide {
+  display: none;
 }

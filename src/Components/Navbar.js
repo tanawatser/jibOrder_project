@@ -5,76 +5,55 @@ import {
   MDBNavbarBrand,
   MDBNavbarNav,
   MDBNavItem,
-  MDBNavLink,
-  MDBNavbarToggler,
-  MDBCollapse,
-  MDBMask,
-  MDBRow,
-  MDBCol,
-  MDBIcon,
-  MDBBtn,
-  MDBView,
   MDBContainer,
   MDBFormInline,
+  MDBNavLink,
+  MDBNavbarToggler,
+  MDBCollapse
+
 } from "mdbreact";
-import "../Style/Navbarstyle.css";
+
 
 class Navbar extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-
+      isOpen: false
     };
   }
 
+  toggleCollapse = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+  }
+
   render() {
-    const overlay = (
-        <div
-          id="sidenav-overlay"
-          style={{ backgroundColor: "transparent" }}
-          onClick={this.handleTogglerClick}
-        />
-      );
+   
     return (
-        <div id="apppage">
+        
         <Router>
-          <div>
-            <MDBNavbar
-            dark
-              expand="md"
-              fixed="top"
-              scrolling
-              transparent
-              color="default-color"
-            >
-              <MDBContainer>
-                <MDBNavbarBrand>
-                  <strong className="white-text">ระบบสั่งสินค้าสำหรับสาขา</strong>
-                </MDBNavbarBrand>
+          <MDBNavbar color="indigo" dark expand="md">
+        <MDBNavbarBrand>
+          <strong className="white-text">ระบบสั่งสินค้า</strong>
+        </MDBNavbarBrand>
+        <MDBNavbarToggler onClick={this.toggleCollapse} />
+        <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
+          <MDBNavbarNav left>
+            <MDBNavItem >
+              <MDBNavLink to="/">หน้าหลัก</MDBNavLink>
+            </MDBNavItem>
+            <MDBNavItem>
+              <MDBNavLink to="/order">สั่งสินค้า</MDBNavLink>
+            </MDBNavItem>
+            <MDBNavItem>
+              <MDBNavLink to="!#">รายการที่สั่งสินค้า</MDBNavLink>
+            </MDBNavItem>
              
-    
-                  <MDBNavbarNav right>
-                    <MDBNavItem>
-                      <MDBFormInline waves>
-                        <div className="md-form my-0">
-                          <input
-                            className="form-control mr-sm-2"
-                            type="text"
-                            placeholder="Search"
-                            aria-label="Search"
-                          />
-                        </div>
-                      </MDBFormInline>
-                    </MDBNavItem>
-                  </MDBNavbarNav>
-               
-              </MDBContainer>
+            </MDBNavbarNav>
+            </MDBCollapse>
             </MDBNavbar>
-            {this.state.collapsed && overlay}
-          </div>
         </Router>
-      </div>
+    
     );
   }
 }
