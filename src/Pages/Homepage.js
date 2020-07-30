@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { MDBBtn } from "mdbreact";
 
-import "../Style/HomepageStyle.css";
+import Navbar from "../Components/Navbar";
+import Footer from "../Components/Footer";
+
 
 export default class Homepage extends Component {
   constructor(props) {
@@ -12,7 +13,9 @@ export default class Homepage extends Component {
   render() {
     return (
   <>
-  
+  <Navbar />
+  <h1>HOMEPAGE</h1>
+  <Footer />
   </>
     );
   }
