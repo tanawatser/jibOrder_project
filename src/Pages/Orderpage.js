@@ -1,194 +1,148 @@
-import React from "react";
-import { MDBDataTable, MDBBtn, MDBIcon, MDBNavbar, MDBView } from "mdbreact";
-import "../Style/Orderstyle.css"
-import Navbar from "../Components/Navbar"
-import Footer from "../Components/Footer"
+import React, { Component } from "react";
+import JqxGrid, { jqx } from "jqwidgets-scripts/jqwidgets-react-tsx/jqxgrid";
+import "jqwidgets-scripts/jqwidgets/styles/jqx.base.css";
+import "jqwidgets-scripts/jqwidgets/styles/jqx.material-purple.css";
+import "jqwidgets-scripts/jqwidgets/styles/jqx.metrodark.css";
 
-const Orderpage = () => {
-  const data = {
-    columns: [
-      {
-        label: "Image",
-        field: "img",
-        sort: "asc",
-        width: 50,
-      },
-      {
-        label: "ID Product",
-        field: "id",
-        sort: "asc",
-        width: 150,
-      },
-      {
-        label: "Product Name",
-        field: "name",
-        sort: "asc",
-        width: 270,
-      },
-      {
-        label: "Category",
-        field: "cate",
-        sort: "asc",
-        width: 200,
-      },
-      {
-        label: "Stock count",
-        field: "stock",
-        sort: "asc",
-        width: 100,
-      },
-      {
-        label: "Product limit",
-        field: "limit",
-        sort: "asc",
-        width: 150,
-      },
-      {
-        label: "Price (THB)",
-        field: "price",
-        sort: "asc",
-        width: 200,
-      },
-      {
-        label: "Buy",
-        field: "buy",
-        sort: "asc",
-        width: 50,
-      },
-    ],
-    rows: [
-      {
-        img: (
-          <div>
-            <button className="pic-product">
-              <a href="https://www.jib.co.th/web/product/readProduct/34443/1237/CPU--%E0%B8%8B%E0%B8%B5%E0%B8%9E%E0%B8%B5%E0%B8%A2%E0%B8%B9--AMD-AM4-RYZEN9-3900X-3-8-GHz">
-                <MDBIcon icon="camera" size="lg" />
-              </a>
-            </button>
-            <img
-              className="hide"
-              src="https://www.jib.co.th/img_master/product/original/20190709140702_34443_24_1.png"
-            />
-          </div>
-        ),
+export default class Orderpage extends Component {
+  constructor(props) {
+    super(props);
+    this.myGrid = React.createRef(JqxGrid);
+    const source = {
+      datafields: [
+        { name: "product_id", type: "string" },
+        { name: "product_name", type: "string" },
+        { name: "product_type", type: "string" },
+        { name: "product_count", type: "number" },
+        { name: "product_limit", type: "number" },
+      ],
+      datatype: "array",
+      localdata: this.props.data,
+    };
+    this.state = {
+      columns: [
+        {
+          text: "Image",
+          datafield: "pic",
+          columntype: "button",
+          cellsrenderer: () => {
+            return "รูป";
+          },
+          width: "10%",
+          align: "center",
+          editable: false,
+          sortable: false,
+          filterable: false,
+        },
+        {
+          text: "Product_id",
+          datafield: "product_id",
+          width: "15%",
+          align: "center",
+          cellsalign: "center",
+          editable: false,
+        },
+        {
+          text: "Product Name",
+          datafield: "product_name",
+          width: "25%",
+          align: "center",
+          cellsalign: "left",
+          editable: false,
+        },
+        {
+          text: "Category",
+          datafield: "product_type",
+          width: "15%",
+          align: "center",
+          cellsalign: "center",
+          editable: false,
+        },
+        {
+          text: "Stock count",
+          datafield: "product_count",
+          width: "15%",
+          align: "center",
+          cellsalign: "center",
+          editable: false,
+          filterable: false,
 
-        id: "3900",
-        name: "RYZEN R3900X",
-        cate: "CPU",
-        stock: "61",
-        price: "12,000",
-        limit: "10",
-        buy: (
-          <button color="elegant" size="sm">
-            <MDBIcon icon="shopping-cart" size="lg" />
-          </button>
-        ),
-      },
-      {
-        img: (
-          <div>
-            <button className="pic-product">
-              <a href="https://www.jib.co.th/web/product/readProduct/34443/1237/CPU--%E0%B8%8B%E0%B8%B5%E0%B8%9E%E0%B8%B5%E0%B8%A2%E0%B8%B9--AMD-AM4-RYZEN9-3900X-3-8-GHz">
-                <MDBIcon icon="camera" size="lg" />
-              </a>
-            </button>
-            <img
-              className="hide"
-              src="https://www.jib.co.th/img_master/product/original/20190709140702_34443_24_1.png"
-            />
-          </div>
-        ),
+        },
+        {
+          text: "Product Limit",
+          datafield: "product_limit",
+          width: "10%",
+          align: "center",
+          cellsalign: "center",
+          filterable: false,
 
-        id: "3900",
-        name: "RYZEN R3900X",
-        cate: "CPU",
-        stock: "61",
-        price: "12,000",
-        limit: "10",
-        buy: (
-          <button color="elegant" size="sm">
-            <MDBIcon icon="shopping-cart" size="lg" />
-          </button>
-        ),
-      },
-      {
-        img: (
-          <div>
-            <button className="pic-product">
-              <a href="https://www.jib.co.th/web/product/readProduct/34443/1237/CPU--%E0%B8%8B%E0%B8%B5%E0%B8%9E%E0%B8%B5%E0%B8%A2%E0%B8%B9--AMD-AM4-RYZEN9-3900X-3-8-GHz">
-                <MDBIcon icon="camera" size="lg" />
-              </a>
-            </button>
-            <img
-              className="hide"
-              src="https://www.jib.co.th/img_master/product/original/20190709140702_34443_24_1.png"
-            />
-          </div>
-        ),
+          editable: false,
+        },
+        {
+          text: "Buy",
+          datafield: "edit",
+          columntype: "button",
+          cellsrenderer: () => {
+            return "สั่งสินค้า";
+          },
+          width: "10%",
+          align: "center",
+          editable: false,
+          sortable: false,
+          filterable: false,
+        },
+      ],
+      source: new jqx.dataAdapter(source),
+      config: [],
+    };
+    this.onCellclick = this.onCellclick.bind(this);
+  }
 
-        id: "3900",
-        name: "RYZEN R3900X",
-        cate: "CPU",
-        stock: "61",
-        price: "12,000",
-        limit: "10",
-        buy: (
-          <button color="elegant" size="sm">
-            <MDBIcon icon="shopping-cart" size="lg" />
-          </button>
-        ),
-      },
-      {
-        img: (
-          <div>
-            <button className="pic-product">
-              <a href="https://www.jib.co.th/web/product/readProduct/34443/1237/CPU--%E0%B8%8B%E0%B8%B5%E0%B8%9E%E0%B8%B5%E0%B8%A2%E0%B8%B9--AMD-AM4-RYZEN9-3900X-3-8-GHz">
-                <MDBIcon icon="camera" size="lg" />
-              </a>
-            </button>
-            <img
-              className="hide"
-              src="https://www.jib.co.th/img_master/product/original/20190709140702_34443_24_1.png"
-            />
-          </div>
-        ),
-
-        id: "3900",
-        name: "RYZEN R3900X",
-        cate: "CPU",
-        stock: "61",
-        price: "12,000",
-        limit: "10",
-        buy: (
-          <button color="elegant" size="sm">
-            <MDBIcon icon="shopping-cart" size="lg" />
-          </button>
-        ),
-      },
-    ],
+  onCellclick = (e) => {
+    console.log(e.args.row.bounddata.product_count);
+    if (e.args.datafield === "edit") {
+      let oldvalue = e.args.row.bounddata.product_count;
+      if (oldvalue <= 0) {
+        alert("สินค้าหมด");
+      } else {
+        let newvalue = oldvalue - 1;
+        this.myGrid.current.setcellvalue(
+          e.args.row.bounddata.boundindex,
+          "product_count",
+          newvalue
+        );
+      }
+    } else if (e.args.datafield === "pic") {
+      alert("PIC");
+    }
   };
 
-  return (
-    <>
-      
-      <Navbar />
-      <div className="container" >
-      <div className="head-cate">รายการสินค้า</div>
-      <hr className="line" />
-      <MDBDataTable
-       
-        info={false}
-        hover={true}
-        entriesLabel="จำนวนข้อมูล (แถว)"
-        searchLabel="ค้นหา"
-        paginationLabel={["ก่อนหน้า", "ถัดไป"]}
-        data={data}
-        striped
-      /> 
+  render() {
+    return (
+      <div>
+        <center>
+          <JqxGrid
+            ref={this.myGrid}
+            width="100%"
+            height="700px"
+            source={this.state.source}
+            pageable={true}
+            pagesize={20}
+            autoheight={false}
+            columns={this.state.columns}
+            theme="material"
+            editable={false}
+            enabletooltips={false}
+            selectionmode={"singlecell"}
+            editmode={"click"}
+            columnsresize={false}
+            sortable={true}
+            filterable={true}
+            showfilterrow={true}
+            onCellclick={this.onCellclick}
+          />
+        </center>
       </div>
-      <Footer />
-    </>
-  );
-};
-
-export default Orderpage;
+    );
+  }
+}

@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import Loginbranch from './Pages/Loginbranch'
 import Homepage from './Pages/Homepage'
-import Orderpage from './Pages/Orderpage'
+import Orderpage from "./Managements/Tableproduct"
 import Listproduct from './Pages/Listpage'
 
 

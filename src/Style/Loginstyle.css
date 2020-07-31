@@ -82,3 +82,10 @@
   }
 
 }
+
+.img-logo {
+  width: auto;
+  position: fixed;
+  top:50px
+  
+}

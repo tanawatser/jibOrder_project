@@ -3,6 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router  } from "react-router-dom";
 import Routes from "./Routes";
 import Authen from "../src/Components/Authen"
+import Login from "../src/Pages/Loginbranch"
 import {
   MDBNavbar,
   MDBNavbarBrand,
@@ -18,8 +19,10 @@ import {
   MDBCollapse,
   MDBFooter,
   MDBContainer
-
 } from "mdbreact";
+
+import Logo from "../src/img/logo/logo.png";
+
 
 export default class App extends Component {
   
@@ -31,10 +34,6 @@ export default class App extends Component {
     };
     
   }
-
-
-  
-
 
   toggleCollapse = () => {
     this.setState({ isOpen: !this.state.isOpen });
@@ -49,10 +48,8 @@ export default class App extends Component {
           <div>
           <MDBNavbar className="top-nav" color="indigo" dark expand="md">
           <MDBNavbarBrand>
-            <img src="http://172.18.9.55:3000/static/media/jib-logo-white2.14d6107a.png" style={{width:'70px',marginRight:'1rem'}}/>
-            <strong>
-              ระบบสั่งสินค้า
-            </strong>
+            <img src={Logo} style={{width:'70px',marginRight:'1rem'}}/>
+
           </MDBNavbarBrand>
           <MDBNavbarToggler onClick={this.toggleCollapse} />
           <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
@@ -108,7 +105,7 @@ export default class App extends Component {
 
          </MDBFooter>
          </div>
-         ):(<Authen />)}
+         ):(<Login />)}
 
       </Router>
         

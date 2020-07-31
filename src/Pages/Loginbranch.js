@@ -36,7 +36,7 @@ class Loginbranch extends Component {
   }
   componentWillMount() {
     //window.removeEventListener("resize", this._handleWindowResize);
-    if (this.Auth.loggedIn()) this.props.history.replace("/");
+    if (this.Authen.loggedIn()) this.props.history.replace("/");
   }
 
   chktime() {
@@ -57,35 +57,6 @@ class Loginbranch extends Component {
     return limit;
   }
 
-  // fetchData() {
-  //   if (this.state.username === "" || this.state.password === "") {
-  //     alert("กรุณากรอกรหัสร้านหรือรหัสผ่านของคุณ");
-  //   } else {
-  //     let encode = sha256(this.state.password);
-  //     fetch("http://172.18.9.55:3200/login", {
-  //       method: "POST",
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         username: this.state.username,
-  //         password: this.state.password,
-  //         password: encode,
-  //       }),
-  //     })
-  //       .then((res) => res.json())
-  //       .then((re) => {
-  //         console.log(re);
-  //         this.setState({ token: re.token });
-  //       });
-  //   }
-  //   this.setState({
-  //     username: "",
-  //     password: "",
-  //   });
-  // }
-
   Onsubmit(e) {
     e.preventDefault();
     if (
@@ -96,7 +67,7 @@ class Loginbranch extends Component {
     ) {
       alert("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
     } else {
-      this.Auth.login(this.state.username, this.state.password)
+      this.Authen.login(this.state.username, this.state.password)
         .then((res) => {
           if (res.accessapp === false) {
             alert("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
@@ -179,7 +150,7 @@ class Loginbranch extends Component {
                             value={this.state.password}
                             onChange={this.setvalue}
                           />
-
+                          <br />
                           <div className="text-center mt-4 black-text">
                             <MDBBtn type="submit" color="blue-grey">
                               Log in

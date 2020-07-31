@@ -75,7 +75,7 @@ hr.line {
 .col-sm-12 {
   flex: 0 0 100%;
   
-max-width: 50% !important;
+max-width: 100% !important;
 }
 }
 
@@ -86,7 +86,4 @@ max-width: 50% !important;
   max-width: 50% !important;
   }
 
-}
-.pagination .page-item.active .page-link {
-z-index: -1 !important;
 }

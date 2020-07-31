@@ -1,22 +1,40 @@
 import React, { Component } from "react";
+import JqxGrid, { jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxgrid';
+import "jqwidgets-scripts/jqwidgets/styles/jqx.base.css";
+import "jqwidgets-scripts/jqwidgets/styles/jqx.material-purple.css";
+import "jqwidgets-scripts/jqwidgets/styles/jqx.metrodark.css";
+import "../Style/HomepageStyle.css"
 
-import Navbar from "../Components/Navbar";
-import Footer from "../Components/Footer";
-
-
+import BG from "../img/bg/bg_homepage.jpeg"
 export default class Homepage extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {time: new Date()}
   }
+    
+  currentTime()
+  {
+      this.setState ({
+          time: new Date()
+      })
+}
+
+componentWillMount()
+{
+  setInterval(()=>this.currentTime(),1000)
+}
 
   render() {
     return (
-  <>
-  <Navbar />
-  <h1>HOMEPAGE</h1>
-  <Footer />
-  </>
+      <>
+      <div className="main-container">
+      <h1>ยินดีต้อนรับเข้าสู่ระบบสั่งสินค้า</h1>
+      <div className="clock" >
+         {this.state.time.toLocaleTimeString()}
+      </div>   
+    {/* <img src={BG} /> */}
+  </div>
+    </>
     );
   }
 }
