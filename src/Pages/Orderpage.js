@@ -4,6 +4,8 @@ import "jqwidgets-scripts/jqwidgets/styles/jqx.base.css";
 import "jqwidgets-scripts/jqwidgets/styles/jqx.material-purple.css";
 import "jqwidgets-scripts/jqwidgets/styles/jqx.metrodark.css";
 
+import '../Style/Orderstyle.css'
+
 export default class Orderpage extends Component {
   constructor(props) {
     super(props);
@@ -15,6 +17,8 @@ export default class Orderpage extends Component {
         { name: "product_type", type: "string" },
         { name: "product_count", type: "number" },
         { name: "product_limit", type: "number" },
+        { name: "product_price", type: "number" },
+
       ],
       datatype: "array",
       localdata: this.props.data,
@@ -24,12 +28,11 @@ export default class Orderpage extends Component {
         {
           text: "Image",
           datafield: "pic",
-          columntype: "button",
           cellsrenderer: () => {
-            return "รูป";
+            return '<div class="container"><div class="center"><button><i class="fa fa-camera" aria-hidden="true"></i></button></div></div>';
+            // <img style="margin-left: 5px;" height="60" width="50" src="https://img.advice.co.th/images_nas/advice_activity/201911011332092019.jpg" />
           },
-          width: "10%",
-          align: "center",
+          width: "5%",
           editable: false,
           sortable: false,
           filterable: false,
@@ -75,18 +78,25 @@ export default class Orderpage extends Component {
           align: "center",
           cellsalign: "center",
           filterable: false,
-
+          editable: false,
+        },
+        {
+          text: "Price",
+          datafield: "product_price",
+          width: "10%",
+          align: "center",
+          cellsalign: "center",
+          filterable: false,
           editable: false,
         },
         {
           text: "Buy",
           datafield: "edit",
-          columntype: "button",
+     
           cellsrenderer: () => {
-            return "สั่งสินค้า";
+            return '<div class="container"><div class="center"><button><i class="fa fa-shopping-cart" aria-hidden="true"></i></button></div><div>';
           },
-          width: "10%",
-          align: "center",
+          width: "5%",
           editable: false,
           sortable: false,
           filterable: false,
@@ -121,6 +131,7 @@ export default class Orderpage extends Component {
     return (
       <div>
         <center>
+          
           <JqxGrid
             ref={this.myGrid}
             width="100%"
@@ -140,6 +151,7 @@ export default class Orderpage extends Component {
             filterable={true}
             showfilterrow={true}
             onCellclick={this.onCellclick}
+            rowsheight={40}
           />
         </center>
       </div>
